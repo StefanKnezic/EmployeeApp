@@ -1,0 +1,46 @@
+﻿@model EmployeeApp.ViewModels.LocationViewModel
+
+@{
+    ViewData["Title"] = "Add new Location";
+}
+
+<h1>Add new location</h1>
+
+@if (ViewBag.Message != null)
+{
+    <h4>@ViewBag.Message</h4>
+}
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateLocation">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="City" class="control-label"></label>
+                <input asp-for="City" class="form-control" />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NameOfWorkplace" class="control-label"></label>
+                <input asp-for="NameOfWorkplace" class="form-control" />
+                <span asp-validation-for="NameOfWorkplace" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="ListLocation">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

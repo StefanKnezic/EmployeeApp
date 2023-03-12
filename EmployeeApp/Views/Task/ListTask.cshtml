@@ -1,0 +1,76 @@
+﻿@model IEnumerable<EmployeeApp.ViewModels.TaskListViewModel>
+
+@{
+    ViewData["Title"] = "List of Task";
+}
+
+<h1>List of Task</h1>
+
+<p>
+    <a asp-action="CreateTask">Create New Task</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DueDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TaskCompleted)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+            <tr class="@((item.TaskCompleted == true) ? "color-row" : "")">
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DueDate)
+            </td>                
+             <td>
+               @Html.DisplayFor(modelItem => item.TaskCompleted)
+             </td>
+                
+            <td>
+                @Html.ActionLink("Edit", "EditTask", new {  id=item.Id }) |
+                @Html.ActionLink("Details", "DetailsTask", new {  id=item.Id }) |
+                @Html.ActionLink("Delete", "DeleteTask", new { id=item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<p>
+    <a asp-action="TopTask">Top Five Employees last month</a>
+</p>
+
+<style>
+    .color-row {
+        background-color: lawngreen;
+    }
+</style>

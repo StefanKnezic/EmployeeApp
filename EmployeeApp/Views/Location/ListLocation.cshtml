@@ -1,0 +1,50 @@
+﻿@model IEnumerable<EmployeeApp.ViewModels.LocationViewModel>
+
+@{
+    ViewData["Title"] = "List of Locations";
+}
+
+<h1>List of Locations</h1>
+
+<p>
+    <a asp-action="CreateLocation">Add New Location</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NameOfWorkplace)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameOfWorkplace)
+            </td>
+            <td>
+                @Html.ActionLink("Employees", "EmployeeLocation", new {  id=item.Id }) |
+                @Html.ActionLink("Edit", "EditLocation", new { id=item.Id }) |
+                @Html.ActionLink("Details", "DetailsLocation", new {  id=item.Id  }) |
+                @Html.ActionLink("Delete", "DeleteLocation", new {  id=item.Id })
+                
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

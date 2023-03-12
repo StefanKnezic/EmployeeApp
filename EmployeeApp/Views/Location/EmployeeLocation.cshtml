@@ -1,0 +1,48 @@
+﻿@model IEnumerable<EmployeeApp.Models.EmployeeModel>
+
+@{
+    ViewData["Title"] = "EmployeeLocation";
+}
+
+<h1>All Employees on location: @Model.Select(x => x.Location.NameOfWorkplace).FirstOrDefault()</h1>
+
+<p>
+    <a asp-action="ListLocation">List of all location</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfBirth)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MonthlySalary)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MonthlySalary)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
